@@ -29,7 +29,7 @@ const App = () => {
     return (
         <Router>
             <nav>
-                <Link to="/">Home</Link>
+                <Link to="/Build-Blog-Web-Tutorial">Home</Link>
                 <Link to="/createpost">Create Post</Link>
                 {isAuth ? (
                     <button type="button" onClick={singUserOut}>
