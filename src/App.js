@@ -1,27 +1,51 @@
-import logo from "./logo.svg";
 import "./App.css";
-import { db, auth } from "./firebase-config";
-function App() {
-    console.log(db);
-    console.log(auth);
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import CreatePost from "./pages/CreatePost";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { auth } from "./firebase-config";
+import { useState } from "react";
+import { signOut, onAuthStateChanged } from "firebase/auth";
+const App = () => {
+    const [isAuth, setIsAuth] = useState();
+    // const [currentUser, setCurrentUSer] = useState(false);
+
+    onAuthStateChanged(auth, (user) => {
+        setIsAuth(user);
+    });
+
+    console.log(isAuth);
+    const singUserOut = () => {
+        signOut(auth).then((result) => {
+            window.location.path = "/login";
+        });
+    };
+
+    // useEffect(() => {
+    //     setCurrentUSer(auth.currentUser);
+    //     console.log(auth);
+    // }, [auth]);
+
     return (
-        <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                    Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                    className="App-link"
-                    href="https://reactjs.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Learn React
-                </a>
-            </header>
-        </div>
+        <Router>
+            <nav>
+                <Link to="/">Home</Link>
+                <Link to="/createpost">Create Post</Link>
+                {isAuth ? (
+                    <button type="button" onClick={singUserOut}>
+                        Log Out
+                    </button>
+                ) : (
+                    <Link to="/login">Login</Link>
+                )}
+            </nav>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/createpost" element={<CreatePost />} />
+            </Routes>
+        </Router>
     );
-}
+};
 
 export default App;
