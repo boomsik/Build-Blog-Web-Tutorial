@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Build-Blog-Web-Tutorial/static/css/main.0a91b08a.css",
-    "main.js": "/Build-Blog-Web-Tutorial/static/js/main.b7fd8583.js",
+    "main.js": "/Build-Blog-Web-Tutorial/static/js/main.0bcf2e86.js",
     "static/js/787.429db484.chunk.js": "/Build-Blog-Web-Tutorial/static/js/787.429db484.chunk.js",
     "index.html": "/Build-Blog-Web-Tutorial/index.html",
     "main.0a91b08a.css.map": "/Build-Blog-Web-Tutorial/static/css/main.0a91b08a.css.map",
-    "main.b7fd8583.js.map": "/Build-Blog-Web-Tutorial/static/js/main.b7fd8583.js.map",
+    "main.0bcf2e86.js.map": "/Build-Blog-Web-Tutorial/static/js/main.0bcf2e86.js.map",
     "787.429db484.chunk.js.map": "/Build-Blog-Web-Tutorial/static/js/787.429db484.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0a91b08a.css",
-    "static/js/main.b7fd8583.js"
+    "static/js/main.0bcf2e86.js"
   ]
 }
