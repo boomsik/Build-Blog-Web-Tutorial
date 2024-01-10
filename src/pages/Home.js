@@ -4,36 +4,13 @@ import React, { useEffect, useState, useCallback } from "react";
 function Home({ isAuth }) {
     const [postList, setPostList] = useState([]);
     const postsCollectionRef = collection(db, "posts");
-    // const deletePost = async (id) => {
-    //     const postDoc = doc(db, "posts", id);
-    //     await deleteDoc(postDoc);
-    // };
 
     const deletePost = useCallback(async (id) => {
         const postDoc = doc(db, "posts", id);
         await deleteDoc(postDoc);
+        window.location.reload();
         console.log("delete post");
     }, []);
-    // useEffect(() => {
-    //     const getPost = async () => {
-    //         const data = await getDocs(postsCollectionRef);
-    //         setPostList(
-    //             data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-    //         );
-    //     };
-    //     getPost();
-    // }, [deletePost]);
-
-    // useEffect(() => {
-    //     const getPosts = async () => {
-    //         const data = await getDocs(postsCollectionRef);
-    //         setPostList(
-    //             data.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-    //         );
-    //     };
-
-    //     getPosts();
-    // }, [deletePost]);
 
     useEffect(() => {
         const getPosts = async () => {

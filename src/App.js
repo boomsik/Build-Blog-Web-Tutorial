@@ -8,7 +8,6 @@ import { useState } from "react";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 const App = () => {
     const [isAuth, setIsAuth] = useState();
-    // const [currentUser, setCurrentUSer] = useState(false);
 
     onAuthStateChanged(auth, (user) => {
         setIsAuth(user);
@@ -20,11 +19,6 @@ const App = () => {
             window.location.path = "/login";
         });
     };
-
-    // useEffect(() => {
-    //     setCurrentUSer(auth.currentUser);
-    //     console.log(auth);
-    // }, [auth]);
 
     return (
         <HashRouter>
