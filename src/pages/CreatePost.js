@@ -17,7 +17,7 @@ function CreatePost({ isAuth }) {
                 id: auth.currentUser.uid,
             },
         });
-        navigate("/Build-Blog-Web-Tutorial");
+        navigate("/");
     };
 
     useEffect(() => {
