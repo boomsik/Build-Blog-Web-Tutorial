@@ -2,7 +2,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import CreatePost from "./pages/CreatePost";
-import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { auth } from "./firebase-config";
 import { useState } from "react";
 import { signOut, onAuthStateChanged } from "firebase/auth";
@@ -40,7 +40,7 @@ const App = () => {
                 )}
             </nav>
             <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/Build-Blog-Web-Tutorial" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/createpost" element={<CreatePost />} />
             </Routes>
