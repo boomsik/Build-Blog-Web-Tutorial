@@ -2,7 +2,7 @@ import "./App.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import CreatePost from "./pages/CreatePost";
-import { HashRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { HashRouter, Routes, Route, Link } from "react-router-dom";
 import { auth } from "./firebase-config";
 import { useState } from "react";
 import { signOut, onAuthStateChanged } from "firebase/auth";
@@ -27,7 +27,7 @@ const App = () => {
     // }, [auth]);
 
     return (
-        <Router>
+        <HashRouter>
             <nav>
                 <Link to="/Build-Blog-Web-Tutorial">Home</Link>
                 <Link to="/createpost">Create Post</Link>
@@ -44,7 +44,7 @@ const App = () => {
                 <Route path="/login" element={<Login />} />
                 <Route path="/createpost" element={<CreatePost />} />
             </Routes>
-        </Router>
+        </HashRouter>
     );
 };
 
