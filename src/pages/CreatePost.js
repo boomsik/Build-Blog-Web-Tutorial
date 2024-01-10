@@ -1,9 +1,30 @@
-import React, { useState } from "react";
-import { doc } from "firebase/firestore";
-function CreatePost() {
+import React, { useEffect, useState } from "react";
+import { addDoc, collection } from "firebase/firestore";
+import { db, auth } from "../firebase-config";
+import { useNavigate } from "react-router-dom";
+function CreatePost({ isAuth }) {
     const [title, setTitle] = useState("");
     const [postText, setPostText] = useState("");
-    const createPost = async () => {};
+    const postsCollectionRef = collection(db, "posts");
+    let navigate = useNavigate();
+    const createPost = async () => {
+        await addDoc(postsCollectionRef, {
+            title,
+            postText,
+            author: {
+                name: auth.currentUser.displayName,
+                email: auth.currentUser.email,
+                id: auth.currentUser.uid,
+            },
+        });
+        navigate("/Build-Blog-Web-Tutorial");
+    };
+
+    useEffect(() => {
+        if (isAuth === null) {
+            navigate("/login");
+        }
+    });
     return (
         <div className="createPostPage">
             <div className="cpContainer">
@@ -26,7 +47,9 @@ function CreatePost() {
                         }}
                     />
                 </div>
-                <button type="button">Submit post</button>
+                <button type="button" onClick={createPost}>
+                    Submit post
+                </button>
             </div>
         </div>
     );

@@ -29,20 +29,30 @@ const App = () => {
     return (
         <HashRouter>
             <nav>
-                <Link to="/Build-Blog-Web-Tutorial">Home</Link>
-                <Link to="/createpost">Create Post</Link>
+                <Link to="/">Home</Link>
+
                 {isAuth ? (
-                    <button type="button" onClick={singUserOut}>
-                        Log Out
-                    </button>
+                    <>
+                        <Link to="/createpost">Create Post</Link>
+                        <button
+                            type="button"
+                            className="btn-new"
+                            onClick={singUserOut}
+                        >
+                            Log Out
+                        </button>
+                    </>
                 ) : (
                     <Link to="/login">Login</Link>
                 )}
             </nav>
             <Routes>
-                <Route path="/Build-Blog-Web-Tutorial" element={<Home />} />
+                <Route path="/" element={<Home isAuth={isAuth} />} />
                 <Route path="/login" element={<Login />} />
-                <Route path="/createpost" element={<CreatePost />} />
+                <Route
+                    path="/createpost"
+                    element={<CreatePost isAuth={isAuth} />}
+                />
             </Routes>
         </HashRouter>
     );

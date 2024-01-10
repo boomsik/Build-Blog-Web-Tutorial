@@ -6,7 +6,7 @@ function Login() {
     const signInWithGoogle = () => {
         signInWithPopup(auth, provider)
             .then((result) => {
-                navigate("/");
+                navigate("/createpost");
             })
             .catch((error) => {
                 console.log(error);
